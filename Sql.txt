@@ -1,0 +1,428 @@
+DDL- Create , alter , drop
+
+create table Adil_Syed
+(
+id number (2),
+name varchar (10),
+location varchar (15)
+);
+select * from Adil_Syed;
+
+alter table Adil_Syed
+add email_id varchar (25);
+
+alter table Adil_Syed
+drop column location ;
+
+alter table Adil_Syed
+modify name varchar (25);
+
+alter table Adil_Syed
+modify name varchar (5);
+
+desc Adil_Syed;
+
+drop table Adil_Syed;
+
+
+DML - Insert , update, delete
+
+create table Adil
+(
+id number (2),
+name varchar (10),
+location varchar (15)
+);
+
+select * from Adil_Syed;
+
+insert into Adil_Syed
+values (1,'adil','hyd');
+
+insert into Adil_Syed
+values ('2','  vishnu','bng');
+
+insert into Adil_Syed
+values ('3','john','uk');
+
+select * from Adil_Syed;
+
+select * from Adil;
+
+insert into Adil
+value (select * from Adil_Syed);
+
+truncate table Adil_Syed;
+
+update Adil_Syed
+set location = 'chn'
+where id =1;
+
+delete Adil_Syed;
+
+delete Adil_Syed
+where id =1;
+
+TCL - commit, rollback;
+
+commit;
+
+rollback;
+
+DCL -Grant,revoke
+
+select * from employees;
+
+Aggregate function":- sum, min, avg, max
+
+select sum (salary) from employees;
+select min (salary) from employees;
+select avg (salary) from employees;
+select max (salary) from employees;
+
+select sum (salary), sum (department_id) from employees;
+
+Character function
+
+initcap
+upper
+lower
+ltrim
+rtrim
+trim
+decode
+nvl
+
+select * from Adil_Syed;
+
+select id, initcap(name), location from Adil_Syed;
+select id, upper(name), location from Adil_Syed;
+select id, lower(name), location from Adil_Syed;
+select id, ltrim(name), ltrim(location) from Adil_Syed;
+select id, rtrim(name), location from Adil_Syed;
+select id, trim(name), location from Adil_Syed;
+
+select id, name, decode (location, 'hyd','hyderabad','bng','bangalore','uk','unitedkingdom') from Adil_Syed;
+
+select * from employees;
+
+select first_name, salary, commission_pct, nvl (commission_pct, 15) from employees;
+
+select * from employees
+ select department_id, sum (salary) from employees group by department_id order by department_id;
+
+create table Amazon(
+online_site varchar(20),
+Price Number(10)
+);
+
+insert into amazon values('flipkart',100);
+insert into amazon values('myntra',50);
+insert into amazon values('google',100);
+insert into amazon values('shopclues',20);
+insert into amazon values('google',100);
+insert into amazon values('gmail',100);
+insert into amazon values('chrome',100);
+insert into amazon values('flipkart',100);
+insert into amazon values('google',100);
+insert into amazon values('myntra',100);
+insert into amazon values('flipkart',100);
+
+
+select * from amazon
+
+select online_site, sum(price) from amazon group by (online_site) order by online_site ;
+
+select * from amazon where online_site = 'flipkart'
+
+select department_id, sum (salary) from employees group by department_id having sum(salary) > 20000 order by department_id;
+
+select department_id, sum (salary) from employees group by department_id having sum(salary) > 20000 order by department_id;
+**select department_id, sum(salary) from employees where department_id <> 30 group by department_id having sum(salary) >20000;
+
+select * from employees;
+
+select job_id, count(job_id) from employees group by job_id having count(job_id) >1;
+
+select manager_id, count(manager_id) from employees group by manager_id having count(manager_id) >1;
+
+**select department_id, count (department_id) from employees group by department_id having count(department_id)>1;
+ 
+select distinct (job_id) from employees;
+select distinct(manager_id) from employees;
+select distinct(department_id)from employees;
+
+select * from employees order by salary;
+select * from employees order by salary asc;
+select * from employees order by salary desc;
+
+select employee_id, salary from employees order by employee_id desc;
+
+AND, OR, BETWEEN.
+
+select * from employees where first_name = 'Steven' and department_id = 90;
+select * from employees where first_name = 'Steven' and department_id = 500;
+select * from employees where first_name = 'Steven' and department_id = 80;
+
+OR
+
+select * from employees where first_name = 'Steven' or department_id = 500;
+select * from employees where first_name = 'Steven' or  department_id = 90;
+
+select * from employees where first_name = 'Steven' and department_id = 90;
+
+select * from employees
+
+select * from employees where salary between 10000 and 15000;
+
+select * from employees where salary between 20000 and 35000;
+
+COMPARISON OPERATOR : >,<, =, >=, <=, <>.
+
+select * from employees where salary >10000;
+select * from employees where salary >11000;
+select * from employees where salary >= 11000;
+select * from employees where salary < 10000;
+select * from employees where salary <= 10000;
+select * from employees where salary = 10000;
+select * from employees where salary <> 10000;
+
+create table Flipkart(
+Product_id number (3) not null,
+product_name varchar(15), 
+Product_location varchar(15),
+price number(3));
+
+
+select * from Flipkart
+
+insert into flipkart values(1,'Amul','Hyderabad','500');
+
+insert into flipkart values('1','chocolate','Bangalore','50');
+
+
+create table Myntra(
+Product_id number (3) unique,
+product_name varchar(15), 
+Product_location varchar(15),
+price number(3));
+
+insert into myntra values(1,'Amul','Hyderabad','500');
+
+insert into myntra values(null,'chocolate','Bangalore','50');
+
+
+select * from myntra
+
+create table Customer1(
+ 
+Id number (3) primary key,
+Name varchar (20),
+Location varchar (20)
+);
+
+insert into customer1 values (1,'John','Hyderabad');
+insert into customer1 values (2,'James','Bangalore');
+
+select * from customer1
+
+insert into customer1 values(null,'Jason','Hyderabad');
+
+Composite primary key:-
+
+
+create table Customer2(
+ 
+Id number (3) ,
+Name varchar (20),
+Location varchar (20),
+Phone_number Number (10),
+
+Primary key (id,name,location)
+
+);
+
+1jasonhyd
+
+select * from employees;
+
+select * from departments;
+
+check constraints.
+
+create table Customer3(
+ 
+Id number (3) ,
+Name varchar (20),
+salary number (10),
+check (salary between 10000 and 25000)
+);
+
+insert into customer3 values(1,'abc',10000);
+insert into customer3 values (2,'bcd',5000);
+insert into customer3 values (3,'cde',16000);
+
+select * from employees;
+
+select employee_id, first_name, last_name, salary,
+case 
+when salary > 20000 then 'Grade A'
+when salary > 15000 and salary < 20000 then 'Grade B'
+when salary >10000 and salary <15000 then 'Grade C'
+else 'Grade D'
+end as "details" 
+from employees;
+
+select employee_id,first_name,salary,
+ case when salary > 20000 then 'Grade A'
+ when salary >15000 and salary <20000 then 'Grade B'
+ when salary >10000 and salary <15000 then 'Grade c'
+else 'Grade d'
+end as "Grade"
+from employees;
+
+select * from employees;
+
+select employee_id, first_name,last_name,salary, rank()over (order by salary desc) from employees;
+select employee_id, first_name,last_name,salary, dense_rank()over (order by salary desc) from employees;
+select employee_id, first_name,last_name,salary, rank()over (order by salary desc),dense_rank()over (order by salary desc) from employees;
+
+select employee_id, first_name, last_name,email,phone_number,salary,department_id, rownum, rowid from employees;
+select * from customer3
+
+select id,name,salary, rownum,rowid from customer3;
+
+create table union1(
+Id number(3));
+
+
+insert into union1 values (1);
+insert into union1 values (2);
+insert into union1 values (3);
+insert into union1 values (4);
+insert into union1 values (5);
+insert into union1 values (6);
+insert into union1 values (7);
+insert into union1 values (8);
+
+Create table union2(
+id number (3));
+
+insert into union2 values (7);
+insert into union2 values (8);
+insert into union2 values (9);
+insert into union2 values (10);
+insert into union2 values (11);
+insert into union2 values (12);
+
+select * from union1 
+union 
+select * from union2;
+
+select * from union1
+union all
+select * from union2
+
+select * from union1
+intersect
+select * from union2
+
+select * from union1 
+minus 
+select * from union2
+
+select * from union2
+minus
+select* from union1
+
+select * from employees;
+
+create table Adil as select * from employees where 1=2;
+
+select * from Adil;
+
+create table Bigbazaar(
+id number (3),
+name varchar (15),
+location varchar (15)
+
+);
+
+insert into bigbazaar values (1,'john','Hyderabad');
+insert into bigbazaar values (2,'jacob','bangalore');
+insert into bigbazaar values (6,'chris','chennai');
+insert into bigbazaar values (3,'james','mumbai');
+insert into bigbazaar values (4,'adil','Hyderabad');
+insert into bigbazaar values (5,'gary','Hyderabad');
+insert into bigbazaar values (7,'butler','Hyderabad');
+
+Create table Bigbazaar1(
+id number (3),
+name varchar (15)
+);
+
+insert into bigbazaar1 values (1,'john');
+insert into bigbazaar1 values (2,'jacob');
+insert into bigbazaar1 values (10,'jordan');
+insert into bigbazaar1 values (11,'morkel');
+insert into bigbazaar1 values (12,'pattinson');
+insert into bigbazaar1 values (13,'warner');
+insert into bigbazaar1 values (14,'williamson');
+
+
+select id, name from bigbazaar 
+union
+select id, name from bigbazaar1;
+
+select id, name from bigbazaar 
+union all
+select id, name from bigbazaar1;
+
+select id, name from bigbazaar 
+intersect
+select id, name from bigbazaar1;
+
+select id, name from bigbazaar 
+minus
+select id, name from bigbazaar1;
+
+select id, name from bigbazaar1 
+minus
+select id, name from bigbazaar;
+
+select * from employees;
+select * from departments
+
+select employees.employee_id, employees.first_name, employees.last_name, employees.salary, employees.manager_id, departments.department_id, departments.department_name
+from employees,departments 
+where employees.department_id = departments.department_id;
+
+select * from employees, departments;
+
+
+select * from employees;
+
+select e.employee_id, e.first_name employee, m.first_name manager  
+from employees e, employees m 
+where e.manager_id=m.employee_id;
+
+select e.employee_id, e.first_name employee_details, m.first_name manager_details
+from employees e, employees m 
+where e.manager_id=m.employee_id;
+
+
+
+select * from departments
+select * from employees
+
+select e.employee_id, e.first_name, e.salary, d.department_id, d.department_name
+from employees e left outer join departments d
+on e.department_id = d.department_id;
+
+select e.employee_id, e.first_name, e.salary, d.department_id, d.department_name
+from employees e right outer join departments d
+on e.department_id = d.department_id;
+
+
+
+
