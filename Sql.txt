@@ -1,3 +1,5 @@
+Sql queries
+
 DDL- Create , alter , drop
 
 create table Adil_Syed
